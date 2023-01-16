@@ -9,7 +9,7 @@ public class MainClass {
 		System.out.println(MyMath.PI);
 
 		MyMath yourMath = new MyMath();
-		System.out.println(MyMath.PI);
+		System.out.println(yourMath.PI);
 		
 		/* static 메소드이므로 Mymath 클래스의 하나만 저장할 수 있음.
 		     = myMath와 yourMate 객체의 pi의 참조값이 같음.
@@ -18,8 +18,6 @@ public class MainClass {
 		   묶어서 MyMath.PI 클래스로 비교하면 된다.
 		     = static 요소는 클래스를 이용해서 호출하는 것이 권장 */
 		System.out.println(MyMath.PI);
-		System.out.println(yourMath.PI);
-		
 		System.out.println(myMath.getCircleArea(1.5));
 		
 		

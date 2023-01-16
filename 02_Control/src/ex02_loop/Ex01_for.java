@@ -24,7 +24,7 @@ public class Ex01_for {
 		// 횟수(5번)
 		
 		int count = 5;
-		for(int a = 0; a < count; a++) {
+		for (int a = 0; a < count; a++) {
 			System.out.println("Hello World");
 		}
 			
@@ -46,7 +46,7 @@ public class Ex01_for {
 		
 		int dan = 2; // 이 곳에 원하는 구구단을 넣으면 된다.
 		
-		for(int a = 1; a < 10; a++) {
+		for (int a = 1; a < 10; a++) {
 			System.out.println(dan + " x " + a + " = " + (dan * a));
 		}
 		
