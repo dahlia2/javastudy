@@ -143,7 +143,7 @@ public class Ex01_String {
 			// 2. indexOf (String str, int index) : 인덱스 index부터 str을 검색
 			
 			String slogan = "걱정한다고 걱정이 없어지면 걱정이 없겠네";
-			int idx1 = slogan.indexOf("걱정");
+			int idx1 = slogan.indexOf("정");
 			int idx2 = slogan.indexOf("걱정", idx1 + 1);
 			int idx3 = slogan.indexOf("걱정", idx2 + 1);
 			
