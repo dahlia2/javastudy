@@ -17,8 +17,8 @@ public class Ex05_Calendar {
 		Calendar now = Calendar.getInstance();
 		System.out.println(now); // 전달만 해주는 역할이기에 now의 값은 이상하게 나옴
 		
-		// 년, 월, 일, 요일, 가져오기
-		int year = now.get(Calendar.YEAR);            // now.get(1)과 동일하게 동작
+		// 년, 월, 일, 요일 가져오기
+		int year = now.get(1);            // now.get(1)과 동일하게 동작
 		int month = now.get(Calendar.MONTH) + 1;      // 월(0~11) : 주의가 필요함
 		int day = now.get(Calendar.DAY_OF_MONTH);
 		int weekNo = now.get(Calendar.DAY_OF_WEEK);   // 일(1), 월(2), ...토(7);
@@ -26,7 +26,7 @@ public class Ex05_Calendar {
 		System.out.println(year);
 		System.out.println(month);
 		System.out.println(day);
-		String[] week = {"일", "월", "화", "수", "목", "금", "토"};
+		// String[] week = {"일", "월", "화", "수", "목", "금", "토"};
 		System.out.println(weekNo);
 		
 		// 오전/오후, 시, 분, 초

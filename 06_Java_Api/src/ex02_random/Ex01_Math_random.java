@@ -27,14 +27,14 @@ public class Ex01_Math_random {
 		
 		주사위: (int)(Math.random()) * 6) + 1
 		*/
-		
+
 		StringBuilder sb = new StringBuilder();
-		
-		for(int count = 0; count < 5; count++) {
-			sb.append( (int) ( Math.random() ) * 10);
-		} 
-		String str = sb.toString();
-		System.out.println(str);
+		for (int count = 0; count < 6; count++) {
+			sb.append((int) (Math.random() * 10));
+		}
+
+		String code = sb.toString();
+		System.out.println(code);
 	}
 
 	public static void main(String[] args) {

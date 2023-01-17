@@ -187,7 +187,7 @@ public class Ex01_String {
 		if(name.startsWith("이")) {
 			System.out.println("이씨다.");
 		} else {
-			System.out.println("민씨가 아니다.");
+			System.out.println("이씨가 아니다.");
 		}
 		
 	}
@@ -294,19 +294,17 @@ public class Ex01_String {
 		
 		System.out.println(String.format("%o", number));  //%o : 8진수로 표시하시오
 		System.out.println(String.format("%d", number));  //%d : 10진수로 표시하시오
-		System.out.println(String.format("%x", number));  //%d : 16진수로 표시하시오 (0~9, a, b, c, d, e, f)
-		System.out.println(String.format("%x", number));  //%d : 16진수로 표시하시오 (0~9, A, B, C, D, E, F)
+		System.out.println(String.format("%x", number));  //%x : 16진수로 표시하시오 (0~9, a, b, c, d, e, f)
 		
-		
-		// 문자열 형식 지정학
+		// 문자열 형식 지정하기
 		String str = "hi";
 		System.out.println(String.format("%s", str));
 		
 		// 출력 폭 
-		System.out.println(String.format("%10d", number));  // %10d : 10자리로 표시하시오
-		System.out.println(String.format("%10d", number));  // %-10d : 10자리로 표시하시오. 숫자는 오른쪽에
-		System.out.println(String.format("%5s", number));  // %5s : 10자리로 표시하시오
-		System.out.println(String.format("%-5s", number));  // %-5s : 10자리로 표시하시오
+		System.out.println(String.format("%10d", number));  // %10d : 10자리로 표시하시오. 숫자는 오른쪽에 표시하시오.
+		System.out.println(String.format("%-10d", number));  // %-10d : 10자리로 표시하시오. 숫자는 왼쪽에 표시하시오.
+		System.out.println(String.format("%5s", str));  // %5s : 
+		System.out.println(String.format("%-5s", str));  // %-5s : 
 	}
 	
 	
@@ -347,7 +345,7 @@ public class Ex01_String {
 			extName = ".tar.gz";
 		} else  {
 			fileName = fullName.substring(0, fullName.lastIndexOf("."));
-			extName = fullName.substring(0, fullName.lastIndexOf("."));
+			extName = fullName.substring(fullName.lastIndexOf("."));
 		}
 		
 		System.out.println(fileName);
@@ -357,7 +355,7 @@ public class Ex01_String {
 		
 	
 	public static void main(String[] args) {
-		indexOf();
+		format();
 	}
 	
 }
