@@ -22,7 +22,7 @@ public class Ex05_Calendar {
 		int month = now.get(Calendar.MONTH) + 1;      // 월(0~11) : 주의가 필요함
 		int day = now.get(Calendar.DAY_OF_MONTH);
 		int weekNo = now.get(Calendar.DAY_OF_WEEK);   // 일(1), 월(2), ...토(7);
-		
+		 
 		System.out.println(year);
 		System.out.println(month);
 		System.out.println(day);
