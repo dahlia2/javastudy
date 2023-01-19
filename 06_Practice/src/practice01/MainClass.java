@@ -11,13 +11,18 @@ public class MainClass {
 	// Hint : 가위는 0, 바위는 1, 보는 2로 처리한다.
 	public static void ex01() {
 		
-		Scanner scanner = new Scanner(System.in);
-
 		System.out.println("실행");
 		System.out.print("가위바위보 >>> ");
 		
+		Scanner sc = new Scanner(System.in);
+		int user = Integer.parseInt(sc.nextLine());
 		
+		int computer = (int)(Math.random()) * 2 + 1;
+		System.out.println(computer);
 		
+		if(user > computer) {
+			System.out.println("당신은" + sc.toString() + "컴퓨터는" + "이겼습니다");
+			} 
 	}
 	
 	// 문제2. 친구 3명을 저장할 수 있는 배열을 생성하고 임의의 값으로 초기화하시오.
@@ -103,7 +108,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-
+		ex01();
 	}
 
 }
