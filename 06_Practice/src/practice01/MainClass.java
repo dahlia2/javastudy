@@ -15,7 +15,6 @@ public class MainClass {
 
 		System.out.println("실행");
 		System.out.print("가위바위보 >>> ");
-		String  = sc.nextLine();
 		
 		
 		
