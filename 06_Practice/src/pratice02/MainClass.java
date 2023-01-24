@@ -1,5 +1,7 @@
 package pratice02;
 
+import java.util.Scanner;
+
 public class MainClass {
 
 	// 문제1. 통장(balance)에 최초 5000원이 있다.
@@ -14,7 +16,16 @@ public class MainClass {
 	// 출금 전 1원, 6회 출금액 1원, 출금 후 0원
 	public static void ex01() {
 		
+	int balance = 5000;
+	int count = 0;
+	while (balance > 0) {
+		count ++;
+		int withdraw = (int) ((Math.random()) * balance) + 1;
+		System.out.println("출금 전 " + balance + "원, " + count + "회 출금액 " +
+		withdraw + "원, " + "출금 후 " + (balance -= withdraw) + "원");
 	}
+	
+}
 	
 	// 문제2. UpDown 게임
 	// 1 ~ 10000 사이의 난수를 발생시키고 해당 난수를 사용자가 맞히는 게임이다.
@@ -29,7 +40,30 @@ public class MainClass {
 	// 정답. 총 5번만에 성공.
 	public static void ex02() {
 		
+		int number = (int) (Math.random() * 10000) + 1;
+		int user = 0;
+		int count = 0;
+		Scanner sc = new Scanner(System.in);
+		
+		do {
+			System.out.print("입력 >>> ");
+			user = sc.nextInt();
+			count ++;
+			if(user < 1 || user > 10000) {
+				System.out.println("1~10000 사이만 유효합니다.");
+				continue;
+			}
+			if(user == number) {
+				System.out.println("정답! 총 " + count + "번만에 성공.");
+			} else if(user > number) {
+				System.out.println("Down!");
+			} else {
+				System.out.println("Up!");
+			}
+		} while(user != number);
+		sc.close();
 	}
+	
 	
 	// 문제3. 자동으로 진행되는 윷 던지기를 구현하시오. 윷이나 모가 나오면 추가로 던지시오.
 	// 예시)
@@ -40,6 +74,20 @@ public class MainClass {
 	// "모", "윷", "도", 10칸 이동한다.
 	public static void ex03() {
 		
+		String[] board = {"" , "도", "개", "걸", "윷", "모"};
+		int total = 0;
+		
+		while(true) {
+			int random = (int)(Math.random() * 5) + 1;
+			System.out.print("\"" + board[random] + "\"");
+			total += random;
+			if(random < 4) {
+				System.out.print(", " + total + "칸 이동한다.");
+				break;
+			} else {
+				System.out.print(", ");
+			}
+		}	
 	}
 	
 	// 문제4. 0~9 사이 난수를 100개 생성하시오.
@@ -56,6 +104,28 @@ public class MainClass {
 	// 8 : ####### 7
 	// 9 : ########### 11
 	public static void ex04() {
+		
+		/* for(int i = 0; i < 100; i++) {
+			String[] num = new String[(int)Math.random()*10];
+			System.out.println(i + " : " + ) ; 
+			}  ... 포기 ㅋ */
+		
+		int[] arr = new int[100];
+		int[] count = new int[10];
+		
+		for(int i = 0; i < arr.length; i++) {
+			arr[i] = (int)(Math.random() * 10);
+			count[arr[i]]++;
+		}
+		
+		for(int i = 0; i < count.length; i++) {
+			StringBuilder sb = new StringBuilder();
+			for(int j = 0; j < count[i]; j++) {
+				sb.append("#");
+		}
+		String graph = sb.toString();
+		System.out.println(i + " : " + graph + " " + count[i]);
+	}
 		
 	}
 	
@@ -82,6 +152,34 @@ public class MainClass {
 	// 합계 180  183  189  552	
 	public static void ex05() {
 		
+		String[] student = {"정숙", "미희", "상철", "합계"};
+		String[] subject = {"국어", "영어", "수학", "총점"};
+		int[][] score = new int[student.length][subject.length];
+		Scanner sc = new Scanner(System.in);
+		
+		for(int i = 0; i < score.length - 1; i++) {
+			for(int j = 0; j < score[i].length - 1; j++) {
+				System.out.print(student[i] + "의 " + subject[j] + " 점수 >>> ");
+				score[i][j] = sc.nextInt();                 // 학생-과목별로 점수 입력값 받음
+				score[i][subject.length - 1] += score[i][j];    //학생당 총점 += 입력값
+				score[student.length - 1][j] += score[i][j];  // 합계 과목당 += 입력값
+			}
+		}
+				System.out.print("\n\t");    // 라인 바꾸고 공백 추가
+				for(int i = 0; i < subject.length; i++) {
+					System.out.print(subject[i] + "\t");
+				}
+				
+				System.out.println();
+				
+				for(int i = 0; i < student.length; i++) {
+					System.out.print(student[i] + "\t");
+					for(int j = 0; j < subject.length; j++) {
+						System.out.print(score[i][j] + "\t");
+				}
+				System.out.println();
+			}
+				sc.close();
 	}
 	
 	// 문제6. 4계절이 저장되어 있는 영한 사전(2차원 배열)을 이용하여 문제를 해결하시오.
@@ -95,7 +193,25 @@ public class MainClass {
 	// 겨울을 영어로 하면? >>> win
 	// 오답
 	public static void ex06() {
+		Scanner sc = new Scanner(System.in);
+		String user;
 		
+		String[][] season = { {"봄", "spring"},
+							{"여름", "summer"},
+							{"가을", "fall"},
+							{"겨울", "winter"}
+		};
+		
+		for(int i = 0; i < season.length; i++) {
+			System.out.print(season[i] + "을 영어로 하면? >>> ");
+			user = sc.next();
+			if(user.equalsIgnoreCase(season[i][1])) {
+				System.out.println("정답");
+			} else {
+				System.out.println("오답");
+			}
+		}
+		sc.close();
 	}
 	
 	// 문제7. 다음 순서에 따라서 5 x 5 형태의 숫자 빙고판을 자동으로 생성하시오.
@@ -187,7 +303,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		ex06();
 
 	}
 

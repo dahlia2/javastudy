@@ -10,7 +10,7 @@ public class MainClass {
 		Gun gun = new Gun();
 		while(true)
 			try {
-				System.out.println("1.장전  2.발사  0.종료 >>>");
+				System.out.println("1.장전  2.발사  0.종료 >>> ");
 				String choice = sc.next();
 				
 				switch(choice) {

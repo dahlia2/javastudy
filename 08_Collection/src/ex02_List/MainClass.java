@@ -27,6 +27,7 @@ public class MainClass {
 		// 확인
 		System.out.println(list);
 		list.remove(2);              // 삭제할 대상의 인덱스를 전달
+		
 	}
 	
 	public static void ex02() {
@@ -45,8 +46,8 @@ public class MainClass {
 		// 모든 요소의 합계 구하기
 		
 		int total = 0;
-		for(int i = 0, length = userList.size(); i < length; i++) {
-			total += list(i);
+		for(int i = 0, length = list.size(); i < length; i++) {
+			total += list.get(i);
 		}
 			System.out.println(total);
 		}
@@ -61,12 +62,11 @@ public class MainClass {
 	}
 	
 	// 아이디만 출력하기
-	for(int i = 0, length= userList.size(); i < length; i++) {
+	for(int i = 0, length = userList.size(); i < length; i++) {
 		System.out.println(userList.get(i).getId());
 	}
 	
 }
-	
 	
 	public static void main(String[] args) {
 		ex03();

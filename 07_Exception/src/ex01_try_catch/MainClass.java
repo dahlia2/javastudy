@@ -17,7 +17,7 @@ public class MainClass {
 			season[4] = "what??";
 			
 			for(String str : season) {
-				System.out.println(str.substring(0, 3));
+				System.out.println(str.substring(0, 3)); 
 			}
 	
 		} catch(Exception e) { 	// NullPointerException의 e로 입력하는 것이 일반적

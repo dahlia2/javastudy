@@ -140,9 +140,11 @@ public class MainClass {
 		String[] name = {"정숙", "미희", "상철", "합계"};
 		String[] course = {"국어", "영어", "수학", "총점"};
 		int[][] score = new int[name.length][course.length];
+		
 		for (int i = 0; i < score.length - 1; i++) {
 			for (int j = 0; j < score[i].length - 1; j++) {
 				System.out.print(name[i] + "의 " + course[j] + " 점수 >>> ");
+				
 				score[i][j] = sc.nextInt();
 				score[i][course.length - 1] += score[i][j];
 				score[name.length - 1][j] += score[i][j];

@@ -164,7 +164,7 @@ public class MainClass {
 		switch(genderNo) {
 		case 1:
 		case 2: 
-			birthYear = 19 + personalId.substring(0, 2); 
+			birthYear = 19 + personalId.substring(0, 2);
 			break;
 		case 3:
 		case 4: 
@@ -219,7 +219,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex10();
+		ex07();
 	}
 
 }

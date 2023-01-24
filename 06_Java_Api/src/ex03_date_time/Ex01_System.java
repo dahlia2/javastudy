@@ -26,7 +26,7 @@ public class Ex01_System {
 		
 		
 		// String의 + 연산과 StringBuilder의 append 메소드 성능 확인하기
-		String str = "";
+		// String str = "";
 		StringBuilder sb = new StringBuilder();
 		
 		// 시작시간
