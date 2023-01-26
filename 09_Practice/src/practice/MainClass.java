@@ -1,6 +1,5 @@
 package practice;
 
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -160,7 +159,8 @@ public class MainClass {
 			sc.close();
 			
 			} catch(IOException e) {
-			
+				e.printStackTrace();
+		
 			// 날짜
 			LocalDateTime now = LocalDateTime.now();
 			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd일 HH시 MM분 SS초");
@@ -171,6 +171,7 @@ public class MainClass {
 			
 			// 예외 메세지
 			String message = e.getMessage();
+			}
 			
 			// 로그 파일 만들기
 			File dir = new File("C:" + File.separator + "storage");
