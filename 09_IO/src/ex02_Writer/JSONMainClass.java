@@ -1,5 +1,15 @@
 package ex02_Writer;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -126,8 +136,43 @@ public class JSONMainClass {
 		}
 	}
 	
+	public static void ex05() {
+		
+	Map<String, Object> product1 = new HashMap<String, Object>();
+	product1.put("model", "세탁기");
+	product1.put("brand", "삼성");
+	product1.put("price", 100);
+	
+	Map<String, Object> product2 = new HashMap<String, Object>();
+	product2.put("model", "냉장고");
+	product2.put("brand", "LG");
+	product2.put("price", 200);
+	
+	Map<String, Object> product3 = new HashMap<String, Object>();
+	product3.put("model", "TV");
+	product3.put("brand", "삼성");
+	product3.put("price", 300);
+
+	List<Map<String, Object>> products = Arrays.asList(product1, product2, product3);
+	
+	JSONArray arr = new JSONArray(products);
+	
+	File dir = new File("C:" + File.separator + "storage");
+	if(dir.exists() == false) {
+		dir.mkdirs();
+	}
+	File file = new File(dir, "product.json");
+	
+	try(BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
+		bw.write(arr.toString());
+	} catch(IOException e) {
+		e.printStackTrace();
+	}
+	
+	}
+	
 	public static void main(String[] args) {
-		ex04();
+		ex05();
 
 	}
 
