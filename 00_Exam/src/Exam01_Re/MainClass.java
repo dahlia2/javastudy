@@ -1,4 +1,4 @@
-package re_exam;
+package Exam01_Re;
 
 import java.util.Arrays;
 
