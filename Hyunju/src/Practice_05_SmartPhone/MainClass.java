@@ -1,5 +1,6 @@
 package Practice_05_SmartPhone;
 
+
 public class MainClass {
 
 	public static void main(String[] args) {

@@ -23,7 +23,7 @@ public class JSONMainClass {
 	*/
 	
 	/* 
-		JSON-Java (JSON in Java) 라이브러리
+		JSON-Java (JSON in Java) 라이브러리 > 클래스들의 모음집
 		1. 객체 : JSONObject 클래스 (Map 기반으로 제작된 클래스)
 		2. 배열 : JSONArray 클래스
 	 */
