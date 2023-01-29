@@ -1,7 +1,9 @@
 package practice;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -33,6 +35,7 @@ public class MainClass {
 		}
 		
 	}
+	
 	
 	// 문제2. C:\Program Files\Java\jdk-11.0.17 경로의 파일 목록을 아래와 같이 출력하시오.
 	/*
@@ -79,6 +82,7 @@ public class MainClass {
 		
 	}
 	
+	
 	// 문제3. C:\storage 디렉터리를 삭제하시오.
 	// 파일이 저장된 디렉터리는 지워지지 않으므로 먼저 디렉터리에 저장된 파일을 삭제해야 한다.
 	public static void ex03() {
@@ -95,6 +99,7 @@ public class MainClass {
 		}
 		
 	}
+	
 	
 	// 문제 4. 사용자로부터 입력 받은 문자열을 C:\storage\diary.txt 파일로 보내시오.
 			// 총 5개 문장을 입력 받아서 보내시오.
@@ -129,7 +134,6 @@ public class MainClass {
 			
 			}
 		
-	
 	
 	// 문제5. 예외가 발생한 경우 예외 메시지와 예외 발생시간을 저장한 C:\storage\log.txt 파일을 생성하시오.
 		// 예시)
@@ -195,9 +199,136 @@ public class MainClass {
 			}
 			
 		}
+		
+		
+	// 문제 6. C:\storage\diary.txt 파일을 C:\storage2\diary.txt 파일로 이동하시오
+	// 이동에 소요된 시간을 출력하시오.
+		
+		/* 내가 푼 것
+			File dir = new File("C:" + File.separator + "storage");
+			if(dir.exists() == false) {
+				dir.mkdirs();
+			}
+			
+			File file = new File(dir, "diary.txt");
+			int c;
+			StringBuilder sb = new StringBuilder();
+			
+			
+			File dir2 = new File("C:" + File.separator + "storage2");
+			if(dir2.exists() == false) {
+				dir2.mkdirs();
+			}
+			
+			File file2 = new File(dir2, "diary.txt");
+			
+			try {
+				FileReader fr = new FileReader(file);
+				
+				while((c = fr.read()) != -1) {
+					sb.append((char)c);
+				}
+				String box = sb.toString();
+				
+				FileWriter fw = new FileWriter(file2);
+				fw.write(box);
+				
+				dir.delete();
+				
+			} catch(IOException e) {
+				e.printStackTrace();
+			} */
+		
+		public static void ex06() {
+			// < 정답 > //
+			
+			// from (폴더 + 파일)값 생성
+			File from = new File("C:" + File.separator + "storage", "diary.txt");
+			
+			// toDir 폴더 값 생성
+			File toDir = new File("C:" + File.separator + "storage2");
+			
+			// to (폴더 + 파일)값 생성
+			File to = new File(toDir, from.getName());
+			 // ㄴ storage2 폴더, 파일명은 from와 같은 걸로 가져옴
+			
+			// 보조 스트림 선언
+			BufferedReader br = null;
+			BufferedWriter bw = null;
+			
+			//try 문
+			try {
+				long startTime = System.currentTimeMillis(); // 현재 시간을 롱타입으로 담아줌
+				
+				// 보조 스트림 생성
+				br = new BufferedReader(new FileReader(from));   // 보조스트림을 사용하면 메인은 자동생성'
+				// 읽어올 파일 from에 대한 reader 생성
+				bw = new BufferedWriter(new FileWriter(to));
+				// 적어낼 파일 to에 대한 writer 생성
+				
+				String line = null;
+				while((line = br.readLine()) != null) {
+					bw.write(line);
+					bw.newLine();  // 한줄 프린트하고 엔터
+					}
+				
+				bw.close();
+				br.close();
+				
+				// 복사에 성공했다면 from 파일은 삭제
+				if(from.length() == to.length()) {
+					from.deleteOnExit();
+				}
+				
+				long stopTime = System.currentTimeMillis();
+				
+				System.out.println("이동에 걸린 시간 : " + (stopTime - startTime) + "밀리초");
+				
+			} catch(IOException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+	
+	// 나 혼자 연습 (diary.txt 읽어오기)
+	public static void ex07() {
+			
+		File dir = new File("C:" + File.separator + "storage");
+		if (dir.exists() == false) {
+			dir.mkdirs();
+		}
+		
+		File file = new File(dir, "diary.txt");
+		BufferedReader br = null;
+
+		try {
+			br = new BufferedReader(new FileReader(file));
+
+			StringBuilder sb = new StringBuilder();
+			String line = null;
+
+			while ((line = br.readLine()) != null) {
+				sb.append(line + "\n");
+			}
+			System.out.println(sb.toString());
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (br != null) {
+					br.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+			
 	
 	public static void main(String[] args) {
-		ex03();
+		ex06();
 	}
 
 }
