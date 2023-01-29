@@ -43,6 +43,7 @@ public class ConcertHall {
 	public void cancel() {
 		System.out.print("취소할 좌석 타입 입력" + Arrays.toString(seatTypes) + " >>> ");
 		String seatType = sc.next();
+		
 		for(int i = 0; i < seatTypes.length; i++) {
 			if(seatType.equals(seatTypes[i])) {
 				seatGroups[i].cancel();  // boolean 반환값은 사용하지 않았음
