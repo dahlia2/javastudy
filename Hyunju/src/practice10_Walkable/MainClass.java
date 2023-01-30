@@ -31,7 +31,7 @@ public class MainClass {
 		
 		person.walk(dog);
 		person.walk(cat);
-		person.walk(snake);
+	 //	person.walk(snake);  -> 불가능!
 		
 	}
 

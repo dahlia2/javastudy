@@ -1,11 +1,16 @@
 package practice;
 
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -291,8 +296,8 @@ public class MainClass {
 		}
 		
 	
-	// 나 혼자 연습 (diary.txt 읽어오기)
-	public static void ex07() {
+		// 나 혼자 연습 (diary.txt 읽어오기)
+		public static void ex_alone() {
 			
 		File dir = new File("C:" + File.separator + "storage");
 		if (dir.exists() == false) {
@@ -325,10 +330,112 @@ public class MainClass {
 			}
 		}
 	}
+		
+		// 문제 7. System.in은 키보드로부터 바이트 데이터를 입력 받는 InputStream이다.
+		// System.in으로부터 문장 1개를 입력 받아서 출력하시오
+		// Scanner 대신 BufferedReader를 사용하시오
+		public static void ex07() {
 			
+			
+			BufferedReader br = null;
+			
+			try {
+				br = new BufferedReader(new InputStreamReader(System.in));  // 속도를 향상시켜줌 <- 문자로 바뀌고 <- 키보드로 입력된 게 
+				
+				System.out.print("문장 입력 >>> ");  // 여기까지 과정을 Scanner가 해줬던 거였음
+				String sentence = br.readLine();
+				System.out.println("입력된 문장 : " + sentence);
+		
+			} catch(IOException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if(br != null) {
+						br.close();
+					}
+				} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		
+		// 문제 8. 키보드로부터 하나의 문장을 입력 받은 뒤 C:\storage\ex08.txt 파일에 출력하시오.
+		// Scanner와 DataOutputStream을 사용하시오.
+		public static void ex08() {
+			
+			Scanner sc = new Scanner(System.in);
+			DataOutputStream dos = null;
+			
+			try {
+				dos = new DataOutputStream(new FileOutputStream(new File("C:" + File.separator + "storage", "ex08.bin")));
+				
+				System.out.print("문장 입력 >>> ");
+				String sentence = sc.nextLine();
+				
+				dos.writeUTF(sentence);
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if(dos != null) {
+						dos.close();
+					}
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
 	
+			
+		// 문제 9. C:\GDJ61\installer\eclipse-jee-2021-03-R-win32-x86_64.zip 파일을
+		// C:\storage\eclipse.zip으로 복사하시오
+		public static void ex09() {
+			
+			File file = new File("C:" + File.separator + "GDJ61" + File.separator + "installer" + File.separator + "eclipse-jee-2021-03-R-win32-x86_64.zip");
+			File file2 = new File("C:" + File.separator + "storage" + File.separator + "eclipse-jee-2021-03-R-win32-x86_64.zip");
+			BufferedReader br = null;
+			BufferedOutputStream bos = null;
+			
+			try {
+				
+				br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+				
+				String line = null;
+				StringBuilder sb = new StringBuilder();
+				
+				while((line = br.readLine()) != null) {
+					sb.append(line + "\n");
+				}
+				System.out.println("복사 완료되었습니다.");
+				
+				bos = new BufferedOutputStream(new FileOutputStream(file2));
+				bos.write(sb.toString().getBytes());
+				
+				if(file == file2) {
+					file.deleteOnExit();
+				}
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (bos != null) {
+					if (br != null) {
+						bos.close(); // 여기에 쓰는 걸 권장
+						br.close();
+					}
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+					
+				}
+			}
+				
+		}
+			
 	public static void main(String[] args) {
-		ex06();
+		ex08();
 	}
 
 }
