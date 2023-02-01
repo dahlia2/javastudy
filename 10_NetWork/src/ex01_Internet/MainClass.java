@@ -4,6 +4,7 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
@@ -61,7 +62,7 @@ public class MainClass {
 		
 		try {
 			url = new URL(apiURL);		// MalformedURLException 처리가 필요
-			con = url.openConnection(); // IoException 처리가 필요
+			con = (HttpURLConnection)url.openConnection(); // IoException 처리가 필요
 			
 			/*
 				HTTP 응답 코드 (공부하기!)
@@ -148,56 +149,34 @@ public class MainClass {
 			e.printStackTrace();
 		}
 		
-		// (자바)  <-  (이미지)  / 내가 작성하는 기준으로 자바로 가져오는 거니까 input
-		// '글자'를 읽어드릴 때 reader writer를 쓰는 것임
-		// daum 이미지는 주소는 url가 담았고 java로 오는 통로를 HttpURL커넥션으로 뚫음
-		// ㄴ> 걔 객체인 con으로 getinputstream 메소드로 데이터를 가져옴
+		// (자바)  <-  (이미지)   // 내가 작성하는 기준으로 자바로 보면 가져오는 거니까 input   // 글자를 읽어드릴 때 reader writer를 쓰는 것임
+		// daum 이미지는 url가 처리했고 java로부터 올 수 잇는 통로를 huc으로 뚫음 걔 객체인 con을 이용하여 getinputstream 메소드로 데이터를 가져옴
 		
 	}
 	
 	public static void ex03_02() { // 보조스트림 버퍼 사용
-		
-		String apiURL = "https://t1.daumcdn.net/daumtop_chanel/op/20200723055344399.png";
+		String upiURL = "https://www.google.co.kr/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png";
 		URL url = null;
 		HttpURLConnection con = null;
+		
 		
 		BufferedInputStream in = null;
 		BufferedOutputStream out = null;
 		File file = new File("C:" + File.separator + "storage" + File.separator + "daum.png");
 		
 		try {
-			
-			url = new URL(apiURL);
-			con = (HttpURLConnection) url.openConnection();
+			url = new URL(upiURL);
+			con = (HttpURLConnection)url.openConnection();
 			
 			int responseCode = con.getResponseCode();
-			if(responseCode == HttpURLConnection.HTTP_OK) {
-				
-				in = new BufferedInputStream(con.getInputStream());
-				out = new BufferedOutputStream(new FileOutputStream(file));
-				
-				byte[] b = new byte[10];
-				int readByte = 0;
-				
-				while((readByte = in.read(b)) != -1) {
-					out.write(b, 0, readByte);
-				}
-				
-				System.out.println("다운로드 완료");
-				
-				out.close();
-				in.close();
-				con.disconnect();
-				
-			}
-			
-		} catch(MalformedURLException e) {
+		} catch (MalformedURLException e) {
 			System.out.println("apiURL 주소 오류");
-		} catch(IOException e) {
-			// 접속 실패 또는 스트림 관련 오류
+
+		} catch (IOException e) {
 			e.printStackTrace();
+			System.out.println("apiURL 접속 오류");
 		}
-		
+	
 	}
 
 	public static void ex04() {
@@ -275,85 +254,56 @@ public class MainClass {
 	
 	}
 	
-	public static void ex06() {    // 연습   // 주소를 storage/sfc_web_map.xml로 다운로드 받기
+	public static void ex06() {  // 연습   // 주소를 storage/sfc_web_map.xml로 다운로드 받기
 		
-		String apiURL = "https://gdlms.cafe24.com/uflist/curri/10004/bbs/68_63d8848f7d506.txt";
+		// 가져올 주소 스트링 타입에 담기
+		String apiURL = "http://www.kma.go.kr/XML/weather/sfc_web_map.xml";
+		
+		// 주소를 담을 수 있는 URL 클래스 선언
 		URL url = null;
-		HttpURLConnection con = null;
 		
-		BufferedReader reader = null;
-		BufferedWriter writer = null;
-		File file = null;
+		// URL을 연결할 수 있는 HttpURL 선언
+		HttpURLConnection huc = null;
 		
+		// 내부로 읽어들일 수 있고 속도 향상을 위한 BufferedReader 선언
+		//BufferedReader br = null;
+		
+		// 내부로 읽어들일 수 있고, 속도 향상을 위한 BufferedInputStream (* 텍스트를 받아드리는 게 아니라 reader로 사용 x
+		//BufferedReader br = new BufferedReader(new InputStreamReader());
+		//BufferedInputStream in = new BufferedInputStream(new InputStreamReader();
+		
+		// 파일로 내보내기 위한 FileWriter + 속도향상 Buffered 착용 함께 생성  / 내보낼 폴더도 함께 선언
+		BufferedWriter bw = new BufferedWriter(new FileWriter(new File("C:" + File.separator + "storage", "sfc_web_map.xml")));
+		
+		
+		// 예외처리를 위한 try문 선언
 		try {
 			
+			// 주소를 URL 객체에 담기
 			url = new URL(apiURL);
-			con = (HttpURLConnection) url.openConnection();
 			
+			// (주소를 담은 URL 객체의) url에 통로를 만듬
+			huc = (HttpURLConnection)url.openConnection();
+			
+			// 주소를 담을 빈 스트링 초기화
 			String message = null;
-			int responseCode = con.getResponseCode();
-			if(responseCode == HttpURLConnection.HTTP_OK) {
-				reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-				file = new File("C:" + File.separator + "storage", "다운로드문서.txt");
-				message = "다운로드 성공";
-			} else {
-				reader = new BufferedReader(new InputStreamReader(con.getErrorStream()));
-				file = new File("C:" + File.separator + "storage", "다운로드실패.html");
-				message = "다운로드 실패";
-			}
 			
-			StringBuilder sb = new StringBuilder();
-			char[] cbuf = new char[2];
-			int readCount = 0;
 			
-			while((readCount = reader.read(cbuf)) != -1) {
-				sb.append(cbuf, 0, readCount);
-			}
+			// 접속 가능 코드를 담을 int타입 responsible 선언
+			int responsible = huc.getResponseCode();
 			
-			writer = new BufferedWriter(new FileWriter(file));
-			writer.write(sb.toString());
+			if(responsible == HttpURLConnection.HTTP_OK)  // 접속가능코드를 담은 객체가 정상이라면
+				BufferedReader br = new BufferedReader(new InputStreamReader(huc.getInputStream()));
 			
-			writer.close();
-			reader.close();
-			con.disconnect();
-			
-			System.out.println(message);
-			
-		} catch(MalformedURLException e) {
-			System.out.println("apiURL 주소 오류");
-		} catch(IOException e) {
-			e.printStackTrace();
+			FileWriter fw = new FileWriter(file);
+		} catch (IOException e) {
+			// TODO: handle exception
 		}
+	
+		
 		
 	}
 	
-	public static void ex07() {  // 연습
-		
-		// 1시간마다 갱신되는 전국 날씨 정보
-		String apiURL = "http://www.kma.go.kr/XML/weather/sfc_web_map.xml";
-		URL url = null;
-		HttpURLConnection con = null;
-		BufferedReader reader = null;
-		
-		try {
-			url = new URL(apiURL);
-			con = (HttpURLConnection)url.openConnection();
-			
-			reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-			
-			int readcount = 0;
-			char[] cha = new char[4];
-			StringBuilder sb = new StringBuilder();
-			
-			while((readcount = reader.read(cha)) != -1) {
-				sb.append(cha);
-			}
-			
-		}catch (Exception e) {
-			// TODO: handle exception
-		}
-		
-	}
 	
 	public static void main(String[] args) {
 		ex05();

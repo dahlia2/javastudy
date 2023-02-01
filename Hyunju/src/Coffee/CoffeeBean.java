@@ -1,4 +1,4 @@
-package PRACTICE_2;
+package Coffee;
 
 public class CoffeeBean {
 	
