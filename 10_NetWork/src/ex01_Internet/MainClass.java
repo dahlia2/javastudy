@@ -61,7 +61,7 @@ public class MainClass {
 		
 		try {
 			url = new URL(apiURL);		// MalformedURLException 처리가 필요
-			con = (HttpURLConnection)url.openConnection(); // IoException 처리가 필요
+			con = url.openConnection(); // IoException 처리가 필요
 			
 			/*
 				HTTP 응답 코드 (공부하기!)
