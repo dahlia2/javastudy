@@ -1,6 +1,9 @@
 package ex03_api;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
@@ -25,7 +28,7 @@ public class MainClass {
 		URL url = null;
 		HttpURLConnection con = null;
 		BufferedReader reader = null;
-		
+		BufferedWriter writer = null;
 		
 		try {
 			
@@ -50,12 +53,24 @@ public class MainClass {
 			
 			while((line = reader.readLine()) != null) {
 				sb.append(line + "\n");
-			}     // 내려 받는 과정 끝
+			}     // =============== 내려 받는 과정 끝
 			
 			reader.close();
 			con.disconnect();
 			
-		} catch (UnsupportedEncodingException e) {   // encoding 할 때 필요한 예외
+			// 파일에 보내는 과정
+			File file = new File("C:" + File.separator + "storage", "공항코드정보.xml");
+			writer = new BufferedWriter(new FileWriter(file));
+			writer.write(sb.toString());
+			writer.close();
+			
+			System.out.println("공항코드정보.xml이 생성되었습니다.");
+			
+		} catch(IOException e) {  // 전체 예외 통합
+				e.printStackTrace();
+			}
+			
+		/* } catch (UnsupportedEncodingException e) {   // encoding 할 때 필요한 예외
 			e.printStackTrace();
 		
 		} catch(MalformedURLException e) {     // 잘못된 프로토콜 처리할 때 필요한 예외
@@ -63,7 +78,7 @@ public class MainClass {
 		
 		} catch(IOException e) {  // 입출력에 필요한 예외
 			e.printStackTrace();
-		}
+		} */ 
 		
 		
 	}
