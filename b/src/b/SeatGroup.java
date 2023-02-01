@@ -74,7 +74,7 @@ public class SeatGroup {
 			if(seats[i].isOccupied() && seats[i].isMatched(name)) {
 				// 해당 자리에 점유되어있는지, 입력받은 이름이 점유되어있는 이름과 일치한지 모두 true이면 실행
 				     // 중복되어있는 이름이 없다고 가정
-				seats[i].reserve(null);
+				seats[i].cancel();
 				JOptionPane.showMessageDialog(null, "예약자 " + name + "의 예약이 취소되었습니다.");
 			}
 		} // for문 끝
