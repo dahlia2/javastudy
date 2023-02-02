@@ -27,9 +27,8 @@ public class XMLMainClass {
 			  	5) schArrvCityCode : 도착도시코드
 		*/
 		
-		String apiURL = "http://openapi.airport.co.kr/service/rest/AirportCodeList/getAirportCodeList";
 		String serviceKey = "gj7dS2Er/XeESIZFV3uS5NLHQjEioW2Om5WzKKdNH43iCrt0OR29TPpQr1bSs3ak4sqDUl7a7JYI3b3cCxVeSg==";
-		
+		String apiURL = "http://openapi.airport.co.kr/service/rest/AirportCodeList/getAirportCodeList";
 		URL url = null;
 		HttpURLConnection con = null;
 		BufferedReader reader = null;
@@ -43,9 +42,7 @@ public class XMLMainClass {
 			con = (HttpURLConnection)url.openConnection();
 			
 			con.setRequestMethod("GET"); // 주소창을 입력한 걸 GET하기 위해
-			con.setRequestProperty("Content-Type", "application/xml; charset=UTF-8");
-			// xml 문서의 데이터 타입 , 한글화 시키기 위하여 UTF 처리까지
-			
+			con.setRequestProperty("Content-Type", "application/xml; charset=UTF-8"); // xml 문서의 데이터 타입 , 한글화 시키기 위하여 UTF 처리까지
 			
 			int responseCode = con.getResponseCode();  // 정상이라면 200이 나와야 함
 			
@@ -73,7 +70,7 @@ public class XMLMainClass {
 			
 			System.out.println("공항코드정보.xml이 생성되었습니다.");
 			
-		} catch(Exception e) {  // 전체 예외 통합
+		} catch(IOException e) {  // 전체 예외 통합
 				e.printStackTrace();
 			}
 			
@@ -90,42 +87,40 @@ public class XMLMainClass {
 	}
 	
 	public static void ex02() {
-	
-			String serviceKey = "gj7dS2Er/XeESIZFV3uS5NLHQjEioW2Om5WzKKdNH43iCrt0OR29TPpQr1bSs3ak4sqDUl7a7JYI3b3cCxVeSg==";
-			String apiURL = "http://openapi.airport.co.kr/service/rest/FlightScheduleList/getIflightScheduleList";
-			URL url = null;
-			HttpURLConnection con = null;
-			BufferedReader reader = null;
-			BufferedWriter writer = null;
-	
-			try {
-
-					// 순서 지키기
-					apiURL += "?serviceKey=" + URLEncoder.encode(serviceKey, "UTF-8");
-					apiURL += "&pageNo=1";
-					apiURL += "&schDate=20230201";
-					apiURL += "&schDeptCityCode=ICN";
-					apiURL += "&schArrvCityCode=JFK";
-					url = new URL(apiURL);
-					con = (HttpURLConnection) url.openConnection();
-	
-					con.setRequestMethod("GET");
-					con.setRequestProperty("Content-Type", "application/xml; charset=UTF-8");
-	
-					int responseCode = con.getResponseCode();
-	
-					if (responseCode == HttpURLConnection.HTTP_OK) {
-						reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-					} else {
-						reader = new BufferedReader(new InputStreamReader(con.getErrorStream()));
-					}
-	
-					String line = null;
-					StringBuilder sb = new StringBuilder();
-	
-					while ((line = reader.readLine()) != null) {
-						sb.append(line + "\n");
-				}
+		
+		String serviceKey = "gj7dS2Er/XeESIZFV3uS5NLHQjEioW2Om5WzKKdNH43iCrt0OR29TPpQr1bSs3ak4sqDUl7a7JYI3b3cCxVeSg==";
+		String apiURL = "http://openapi.airport.co.kr/service/rest/AirportCodeList/getAirportCodeList";
+		URL url = null;
+		HttpURLConnection con = null;
+		BufferedReader reader = null;
+		BufferedWriter writer = null;
+		
+		try {
+			
+			// 순서 지키기
+			apiURL += "?serviceKey=" + URLEncoder.encode(serviceKey, "UTF-8");
+			apiURL += "&pageNo=1" + "&schDate=20230201" + "&schDeptCityCode=INC" + "&schArrvCityCode=HND";
+			//apiURL += ""
+			url = new URL(apiURL);
+			
+			con = (HttpURLConnection)url.openConnection();
+			con.setRequestMethod("GET"); 
+			con.setRequestProperty("Content-Type", "application/xml; charset=UTF-8"); 
+			
+			int responseCode = con.getResponseCode();  
+			
+			if(responseCode == HttpURLConnection.HTTP_OK) { 
+				reader = new BufferedReader(new InputStreamReader(con.getInputStream())); 
+			} else {
+				reader = new BufferedReader(new InputStreamReader(con.getErrorStream()));	
+			}
+			
+			String line = null;
+			StringBuilder sb = new StringBuilder();
+			
+			while((line = reader.readLine()) != null) {
+				sb.append(line + "\n");
+			}
 			
 			reader.close();
 			con.disconnect();
@@ -140,10 +135,9 @@ public class XMLMainClass {
 			
 		} catch(IOException e) {  // 전체 예외 통합
 				e.printStackTrace();
-		}
+			}
 		
 	} 
-	
 	
 	public static void main(String[] args) {
 		

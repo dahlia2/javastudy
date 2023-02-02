@@ -30,7 +30,7 @@ public class Americano {
 			System.out.println("더 이상 샷을 추가할 수 없습니다.");
 			return;
 		}
-		cups[idx++] = espresso; // -> ?????
+		cups[idx++] = espresso; // -> 한컵은 에스프레소들의 집합이니까!
 			
 	}
 	

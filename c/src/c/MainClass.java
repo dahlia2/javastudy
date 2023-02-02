@@ -75,9 +75,12 @@ public class MainClass {
 	public static void ex04() {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("serviceKey", "kdjfhkaf");
+		map.put("Service-Key", "kdjfhkaf");
 		map.put("Content-Type", "application/xml");
 		
+		
+		System.out.println(map.get("Service-Key"));
+		System.out.println(map.get("Content-Type"));
 		ex05(map);
 		
 	}
