@@ -6,7 +6,6 @@ public class Regular extends Employee {
 
 	public Regular(int empNo, String name, int salary) {
 		super(empNo, name);
-		this.salary = salary;
 	}
 
 }

@@ -89,6 +89,7 @@ public class Company {
 		System.out.println("전체 사원 목록(" + idx + "명)");
 		for(int i = 0; i < idx; i++) {
 			employees[i].info();
+			// 여기는 단순 print Employees 메소드니까 위에 add 메소드를 통하여 나온 결과값을 산출하기 위해 
 			System.out.println("[월급:" + employees[i].getPay() + "원]");
 			totalPay += employees[i].getPay();
 		}

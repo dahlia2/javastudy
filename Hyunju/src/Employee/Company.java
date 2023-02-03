@@ -52,7 +52,7 @@ public class Company {
 		case "비정규":
 			System.out.print("시급 >>> ");
 			int hourPay = sc.nextInt();
-			employees[idx++] = new Temporary(empNo, name, hourPay);
+		//	employees[idx++] = new Temporary(empNo, name, hourPay);
 			break;
 			
 		default:
