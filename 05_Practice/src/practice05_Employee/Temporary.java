@@ -21,7 +21,8 @@ public class Temporary extends Employee {
 	public void setHourPay(int hourPay) {
 		this.hourPay = hourPay;
 	}
-
+	
+	// 실무에선 쓰는 게 좋음!
 	@Override
 	public void info() {
 		super.info();  // Employee의 info 메소드 호출

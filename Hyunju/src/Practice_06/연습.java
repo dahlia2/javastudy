@@ -1,4 +1,4 @@
-package 설날_공부;
+package Practice_06;
 
 import java.util.Scanner;
 

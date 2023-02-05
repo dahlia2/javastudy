@@ -1,7 +1,5 @@
 package Coffee;
 
-import Practice_04.Espresso;
-
 public class Americano {
 	
 	// 에스프레소 여러 잔이 들어가고

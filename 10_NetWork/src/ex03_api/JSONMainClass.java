@@ -14,6 +14,15 @@ public class JSONMainClass {
 
 	public static void ex01() {
 		
+	/*
+		한국환경공단_에어코리아_대기오염정보 : 시도별 실시간 측정정보 조회
+		1. 서비스 URL : http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty
+		2. 요청 변수(Request Parameter)
+			1) serviceKey : 인증키
+			2) returnType : xml 또는 json
+			3) sidoName : 시도 이름
+    */
+		
 		String serviceKey = "gj7dS2Er/XeESIZFV3uS5NLHQjEioW2Om5WzKKdNH43iCrt0OR29TPpQr1bSs3ak4sqDUl7a7JYI3b3cCxVeSg==";
 		String apiURL = "http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty";
 		URL url = null;
@@ -63,13 +72,15 @@ public class JSONMainClass {
 			JSONObject body = obj.getJSONObject("response").getJSONObject("body");
 			JSONArray items = body.getJSONArray("items");
 			for(int i = 0; i < items.length(); i++) {
-				JSONObject item = items.getJSONObject(i);    // (JSONObject) 으로 쓰기 위해 타입변환 혹은 items.getJONObject();로 할 수 있음
+				JSONObject item = items.getJSONObject(i);
+				// (JSONObject) 으로 쓰기 위해 타입변환 혹은 items.getJONObject();로 할 수 있음
 				String stationName = item.getString("stationName");
 				String pm10Value = item.getString("pm10Value");
 				String o3Value = item.getString("o3Value");
 				System.out.println(stationName + " : 미세먼지 - " + pm10Value + ", 초미세먼지 - " + o3Value);
 				
-				// System.out.println((i + 1) + "--" + item);
+				// System.out.println((i + 1) + "--" + item); 
+				
 			}
 			
 		} catch (Exception e) {
@@ -136,7 +147,7 @@ public class JSONMainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex02();
+		ex01();
 
 	}
 

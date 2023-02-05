@@ -53,6 +53,8 @@ public class Company {
 		int empNo = sc.nextInt();
 		for(int i = 0; i < idx; i++) {
 			if(empNo == employees[i].getEmpNo()) {
+				
+				
 				System.arraycopy(employees, i + 1, employees, i, idx - 1 - i);
 				employees[--idx] = null;
 				System.out.println("사원 삭제 완료. 현재 등록된 사원 " + idx + "명");
@@ -62,7 +64,7 @@ public class Company {
 		System.out.println("사원번호 " + empNo + "인 사원은 존재하지 않습니다.");
 	}
 	
-	public void findEmployee() {
+	public void findEmployee() {  // int a = 0; 매개변수때문에 안에 
 		if(idx == 0) {
 			System.out.println("등록된 사원이 없습니다.");
 			return;
@@ -91,6 +93,7 @@ public class Company {
 			employees[i].info();
 			// 여기는 단순 print Employees 메소드니까 위에 add 메소드를 통하여 나온 결과값을 산출하기 위해 
 			System.out.println("[월급:" + employees[i].getPay() + "원]");
+			// 부모 것들을 가져오되 employee가 가지고 있는 객체를 덧붙여서 전달하는 개념
 			totalPay += employees[i].getPay();
 		}
 		System.out.println("[사원 전체 급여:" + totalPay + "원]");
