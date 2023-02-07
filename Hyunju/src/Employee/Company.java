@@ -7,6 +7,8 @@ public class Company {
 	// 직원들 -> 배열
 	// 인덱스 필드
 	// 값 입력받을 스캐너
+	
+	/* ***************** 미완성
 	private Employee[] employees;
 	private int idx;
 	private Scanner sc;
@@ -14,13 +16,13 @@ public class Company {
 	// 회사에는 최대 5명의 사원을 구할 수 있다 -> 회사클래스의 길이는 5
 	// 스캐너 값을 입력 받음
 	public Company() {
-		employees = new Employee[5];
+	//	employees = new Employee[5];
 		sc = new Scanner(System.in);   // 여기에 스캐너 들어가는 결정적인 개념..
 	}
 	
 	// 사원을 고용하는 메소드
 	public void addEmployee() {
-		if(idx == employees.length) { // 입력한 것이 5명을 초과하면
+//	if(idx == employees.length) { // 입력한 것이 5명을 초과하면
 			System.out.println("더 이상 사원을 고용할 수 없습니다.");
 			return;
 		}
@@ -62,7 +64,7 @@ public class Company {
 		System.out.println("사원 등록 완료. 현재 등록된 사원" + idx + "명");
 	}
 	
+	 
+ */
 	
-	
-
 }

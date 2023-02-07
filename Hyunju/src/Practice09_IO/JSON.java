@@ -58,7 +58,7 @@ public class JSON {
 			// url에 오픈커넥션 메소드를 통해 길을 뚫고 HTTP어쩌구로 변환해서 걔 객체에 담는다
 			con = (HttpURLConnection) url.openConnection();
 			
-			// 이 역시 쌤께 다시 여쭤볼 것..
+			// 공용 API에서 값을 가져오는 걸 GET 메소드로 가져오라고 명시되어있음
 			con.setRequestMethod("GET");
 			
 			// 콘텐트 타입 : 어플-제이손으로 한글은 UTF-8 코드로 변환

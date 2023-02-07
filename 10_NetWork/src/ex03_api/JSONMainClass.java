@@ -147,7 +147,7 @@ public class JSONMainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex01();
+		ex02();
 
 	}
 
