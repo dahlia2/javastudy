@@ -137,6 +137,29 @@ public class JSON {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void ex02() {
+		
+		
+		String serviceKey = "gj7dS2Er/XeESIZFV3uS5NLHQjEioW2Om5WzKKdNH43iCrt0OR29TPpQr1bSs3ak4sqDUl7a7JYI3b3cCxVeSg==";
+		String apiURL = "http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getMinuDustWeekFrcstDspth";
+		
+		URL url = null;
+		HttpURLConnection con = null;
+		BufferedReader reader = null;
+		
+		try {
+			
+
+			StringBuilder sbURL = new StringBuilder();
+			sbURL.append(apiURL);
+			sbURL.append("?ServiceKey=" + URLEncoder.encode(serviceKey, UTF-))
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+	}
 
 	public static void main(String[] args) {
 		ex01();
