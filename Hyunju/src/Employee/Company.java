@@ -9,6 +9,7 @@ public class Company {
 	// 값 입력받을 스캐너
 	
 	/* ***************** 미완성
+	 
 	private Employee[] employees;
 	private int idx;
 	private Scanner sc;

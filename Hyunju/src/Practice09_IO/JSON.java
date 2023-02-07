@@ -153,7 +153,6 @@ public class JSON {
 
 			StringBuilder sbURL = new StringBuilder();
 			sbURL.append(apiURL);
-			sbURL.append("?ServiceKey=" + URLEncoder.encode(serviceKey, UTF-))
 			
 			
 		} catch (Exception e) {
