@@ -38,7 +38,10 @@ public class JSONMainClass {
 			sbURL.append("&returnType=json");
 			sbURL.append("&sidoName=" + URLEncoder.encode(sidoName, "UTF-8"));
 			
-			url = new URL(sbURL.toString());
+			System.out.println(sbURL.toString());
+			
+		/*	url = new URL(sbURL.toString());
+		
 			con = (HttpURLConnection) url.openConnection();
 			
 			con.setRequestMethod("GET");
@@ -55,9 +58,9 @@ public class JSONMainClass {
 			while((line = reader.readLine()) != null) {
 				sb.append(line);
 			}
-			
+			System.out.println(sb.toString());
 			reader.close();
-			con.disconnect();
+			con.disconnect();/*
 			
 		/*
 			JSONObject obj = new JSONObject(sb.toString());		// 가장 바깥쪽 } 괄호의 값
@@ -68,7 +71,7 @@ public class JSONMainClass {
 		*/
 			
 			// 위에를 (obj를)다 합쳐서 body로 만듬 (obj3 == body)
-			JSONObject obj = new JSONObject(sb.toString());
+		/*	JSONObject obj = new JSONObject(sb.toString());
 			JSONObject body = obj.getJSONObject("response").getJSONObject("body");
 			JSONArray items = body.getJSONArray("items");
 			for(int i = 0; i < items.length(); i++) {
@@ -78,10 +81,10 @@ public class JSONMainClass {
 				String pm10Value = item.getString("pm10Value");
 				String o3Value = item.getString("o3Value");
 				System.out.println(stationName + " : 미세먼지 - " + pm10Value + ", 초미세먼지 - " + o3Value);
-				
+				*/
 				// System.out.println((i + 1) + "--" + item); 
 				
-			}
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -147,7 +150,7 @@ public class JSONMainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex02();
+		ex01();
 
 	}
 

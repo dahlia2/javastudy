@@ -174,6 +174,8 @@ public class XMLMainClass {
 				sb.append(line + "\n");
 			}
 			
+			System.out.println(sb.toString());
+
 			reader.close();
 			con.disconnect();
 			
@@ -193,7 +195,7 @@ public class XMLMainClass {
 	
 	public static void main(String[] args) {
 		
-		ex01_parse();
+		ex02();
 
 	}
 
