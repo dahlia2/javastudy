@@ -5,12 +5,13 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
-import netscape.javascript.JSObject;
-
-public class ApiMain {
+public class ApiMain2 {
 
 	public static void main(String[] args) {
 		
@@ -34,7 +35,7 @@ public class ApiMain {
 		
 		// GET 방식의 요청임을 처리
 		con.setRequestMethod("GET");
-		
+		 
 		// 응답 데이터는 "json"임을 처리
 		// 웹 상에서 주고 받는 데이터의 타입 : Content-Type
 		con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");  
@@ -61,19 +62,54 @@ public class ApiMain {
 		// 이제 API의 응답 데이터는 sb에 저장되어 있다.
 		System.out.println(sb.toString());
 		
+		// API의 응답 데이터를 분석하기 위해서 JSONObject로 변환한다.
+		// json 라이브러리 사용을 위해서 Build Path 작업을 수행한다.
 		
+		/*
+		JSONObject obj = new JSONObject(sb.toString());
+		JSONObject items = obj.getJSONObject("items");
+		JSONArray itemList = items.getJSONArray("item");
+		*/
 		
-		//
-			
+		JSONArray itemList = new JSONObject(sb.toString())
+								.getJSONObject("items")
+								.getJSONArray("item");
 		
-		for(int = 0; i < itemList.length(); i++) {
-			JSONObject item = itemList.getJSONbjet
-		}
+		List<Accident2> list = new ArrayList<Accident2>();
 		
-		} catch(Exception e) {
-			e.printStackTrace();
+			for(int i = 0; i < itemList.length(); i++) {
+				
+				JSONObject item = itemList.getJSONObject(i);
+				
+				String occrrncDt = item.getString("occrrnc_dt");
+				String occrrncDayCd = item.getString("occrrnc_day_cd");
+				int dthDnvCnt = item.getInt("dth_dnv_cnt");
+				int injpsnCnt = item.getInt("injpsn_cnt");
+				
+		
+				/* System.out.println(occrrncDt);
+				System.out.println(occrrncDayCd);
+				System.out.println(dthDnvCnt);
+				System.out.println(injpsnCnt);
+				System.out.println("-----"); */
+				
+				// 응답 데이터에서 추출한 데이터를 하나의 객채(Bean)로 만든다.
+				Accident2 accident = new Accident2(); 
+				accident.setOccrrncDt(occrrncDt);
+				accident.setOccrrncDayCd(occrrncDayCd);
+				accident.setDthDnvCnt(dthDnvCnt);
+				accident.setInjpsnCnt(injpsnCnt);
+				
+				list.add(accident);
+					
+			}
+					
+				
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+
 		}
 
-	}
-
-	}
+	
+}
