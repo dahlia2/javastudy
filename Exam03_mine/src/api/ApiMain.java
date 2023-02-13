@@ -35,7 +35,7 @@ public class ApiMain {
 			apiURL += "?serviceKey=" + URLEncoder.encode(serviceKey, "UTF-8");
 			apiURL += "&siDo=1100" + "&guGun=1125" + "&searchYear=2021"
 					+ "&returnType=xml" + "&numOfRows=10" + "&pageNo=1";
-				
+				// 리턴타입 json으로 해야 함 ..
 				
 			url = new URL(apiURL);
 			
