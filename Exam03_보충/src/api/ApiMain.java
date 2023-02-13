@@ -6,6 +6,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
+import org.json.JSONObject;
+
+import netscape.javascript.JSObject;
+
 public class ApiMain {
 
 	public static void main(String[] args) {
@@ -18,7 +22,7 @@ public class ApiMain {
 		apiURL += "&searchYear=" + URLEncoder.encode("2021", "UTF-8");   	// 숫자도 UTF 처리
 		apiURL += "&siDo=" + URLEncoder.encode("1100", "UTF-8");
 		apiURL += "&guGun=" + URLEncoder.encode("1125", "UTF-8");
-		apiURL += "&type=" + URLEncoder.encode("json", "UTF-8");   // 읽는 타입은 json으로
+		apiURL += "&type=" + URLEncoder.encode("json", "UTF-8");   // 리턴타입 혹은 타입 -> 문서에 나와있음! -> 읽는 타입은 json으로
 		apiURL += "&numOfRows=" + URLEncoder.encode("10", "UTF-8");
 		apiURL += "&pageNo=" + URLEncoder.encode("1", "UTF-8");
 	
@@ -61,7 +65,10 @@ public class ApiMain {
 		
 		//
 			
-			
+		
+		for(int = 0; i < itemList.length(); i++) {
+			JSONObject item = itemList.getJSONbjet
+		}
 		
 		} catch(Exception e) {
 			e.printStackTrace();

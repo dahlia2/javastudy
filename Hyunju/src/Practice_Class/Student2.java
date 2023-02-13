@@ -1,4 +1,4 @@
-package _Practice_Class;
+package Practice_Class;
 
 /*
 
