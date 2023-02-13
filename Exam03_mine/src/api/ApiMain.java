@@ -45,8 +45,8 @@ public class ApiMain {
 			
 			if(con.getResponseCode() == HttpURLConnection.HTTP_OK) {
 				reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-			} else {
-				reader = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+				} else {
+			reader = new BufferedReader(new InputStreamReader(con.getErrorStream()));
 			}
 			
 			String line = null;
