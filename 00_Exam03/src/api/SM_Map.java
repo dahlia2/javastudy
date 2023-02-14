@@ -15,7 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
 
-public class RE {
+public class SM_Map {
 
    public static void main(String[] args) {
       
