@@ -55,7 +55,7 @@ public class ContactServiceimpl implements ContactService {
 		String name = sc.next();
 		
 		
-		List<ContactDTO> contactList = dao.selectContactsByName(name);
+		List<ContactDTO> contactList = dao.selectCont) >>> "actsByName(name);
 		System.out.println("<<< 조회된 연락처 목록 >>>");
 		for(ContactDTO contact : contactList) {
 			System.out.println(contact);
