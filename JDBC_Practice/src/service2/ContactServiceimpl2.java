@@ -94,11 +94,11 @@ public class ContactServiceimpl2 implements ContactService2 {
 		System.out.println("<<< 조회된 개인정보 목록 >>>");
 		for(ContactDTO2 contact : contactList) {
 			System.out.println(contact);
-		}  // ContactDTO [contact_no=1, name=이현주, tel=010-2075-2105, email=15_9@naver.com, address=경기] 라고 뜸
+		}  // ContactDTO2 [contact_no=1, name=이현주, tel=010-2075-2105, email=15_9@naver.com, address=경기] 라고 뜸
 		
 		System.out.print("수정할 개인정보 No >>> ");
 		int contact_no = sc.nextInt(); // 입력받은 번호를 저장
-		ContactDTO2 contact = dao.s;   // 입력받은 번호를 매개변수로 전달위해 저장 (수정 전 내용)
+		ContactDTO2 contact = dao.selectContactByNo(contact_no);   // 입력받은 번호를 매개변수로 전달위해 저장 (수정 전 내용)
 		
 		System.out.println("수정할 항목 선택(1. 이름 2. 전화 3. 이메일 4. 주소) >>> ");
 		String choice = sc.next();
@@ -131,17 +131,31 @@ public class ContactServiceimpl2 implements ContactService2 {
 
 	
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-		
+			
+		// [ (이름을 통해) 조회 ]
 	@Override
 	public void findContactsByName() {
-		// TODO Auto-generated method stub
+		System.out.println("===== 개인정보 조회하기 =====");
+		System.out.print("조회할 연락처 이름 >>> ");
+		String name = sc.next();
+		
+		List<ContactDTO2> contactList = dao.selectContactsByName(name);
+		for(ContactDTO2 contact : contactList) {  // 쿼리의 각 칼럼마다 출력하기 위해 for문
+			System.out.println(contact);
+		}
 
 	}
 
+	
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+				
+		// [ 전체 조회 ]
 	@Override
 	public void findAllContacts() {
-		// TODO Auto-generated method stub
-
+		System.out.println("===== 개인정보 목록 ======");
+		for(ContactDTO2 contact : dao.selectAllContacts()) { // selectAllContacts은 ArrayList라고 생각
+			System.out.println(contact);
+		}
 	}
-
+	
 }

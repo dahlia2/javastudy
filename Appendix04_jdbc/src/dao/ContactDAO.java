@@ -212,7 +212,7 @@ public void 목록보기() { }
 				contact = new ContactDTO();
 				contact.setContact_no(contact_no);
 				contact.setName(rs.getString(2));
-				contact.setAddress(rs.getString(3));
+				contact.setTel(rs.getString(3));
 				contact.setEmail(rs.getString(4));
 				contact.setAddress(rs.getString(5));
 			}

@@ -62,5 +62,11 @@ public class ContactDTO2 {
 		this.address = address;
 	}
 
+	@Override
+	public String toString() {
+		return "조회된 연락처 : [contact_no=" + contact_no + ", name=" + name + ", tel=" + tel + ", email=" + email
+				+ ", address=" + address + "]";
+	}
+
 	
 }

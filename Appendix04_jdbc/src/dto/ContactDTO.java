@@ -61,7 +61,7 @@ public class ContactDTO {
 
 	@Override
 	public String toString() {
-		return "ContactDTO [contact_no=" + contact_no + ", name=" + name + ", tel=" + tel + ", email=" + email
+		return "조회 결과 : [contact_no=" + contact_no + ", name=" + name + ", tel=" + tel + ", email=" + email
 				+ ", address=" + address + "]";
 	}
 	

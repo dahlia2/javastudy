@@ -55,7 +55,7 @@ public class ContactServiceimpl implements ContactService {
 		String name = sc.next();
 		
 		
-		List<ContactDTO> contactList = dao.selectCont) >>> "actsByName(name);
+		List<ContactDTO> contactList = dao.selectContactsByName(name);
 		System.out.println("<<< 조회된 연락처 목록 >>>");
 		for(ContactDTO contact : contactList) {
 			System.out.println(contact);
@@ -131,7 +131,7 @@ public class ContactServiceimpl implements ContactService {
 	@Override
 	public void findAllContacts() {
 		System.out.println(" ===== 전체 연락처 목록 ===== ");
-		for(ContactDTO contact : dao.selectAllContacts()) {  // selectAllContracts은  어레이 리스트라고 생각하면 됨 
+		for(ContactDTO contact : dao.selectAllContacts()) {  // selectAllContracts은 어레이 리스트라고 생각하면 됨 
 			System.out.println(contact);
 
 		}
