@@ -3,16 +3,16 @@ package dto;
 public class ContactDTO {
 	
 	private int car_no;
+	private String num;
 	private String model;
-	private int num;
 	
 	public ContactDTO() {}
 
-	public ContactDTO(int car_no, String model, int num) {
+	public ContactDTO(int car_no, String num, String model) {
 		super();
 		this.car_no = car_no;
-		this.model = model;
 		this.num = num;
+		this.model = model;
 	}
 
 	public int getCar_no() {
@@ -23,6 +23,14 @@ public class ContactDTO {
 		this.car_no = car_no;
 	}
 
+	public String getNum() {
+		return num;
+	}
+	
+	public void setNum(String num) {
+		this.num = num;
+	}
+	
 	public String getModel() {
 		return model;
 	}
@@ -31,17 +39,9 @@ public class ContactDTO {
 		this.model = model;
 	}
 
-	public int getNum() {
-		return num;
-	}
-
-	public void setNum(int num) {
-		this.num = num;
-	}
-
 	@Override
 	public String toString() {
-		return "ContactDTO [car_no=" + car_no + ", model=" + model + ", num=" + num + "]";
+		return "ContactDTO [car_no=" + car_no + ", num=" + num + ", model=" + model + "]";
 	}
 	
 }

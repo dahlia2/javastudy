@@ -9,7 +9,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Car {
 	
-	private String carNo;
+	private String num;
 	private String model;
 	
 }

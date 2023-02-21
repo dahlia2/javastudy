@@ -42,7 +42,7 @@ public class ContactController2 {
 				service.findContactsByName();
 			case "5" :
 				service.findAllContacts();
-			case "0" :
+			case "6" :
 				System.out.println("연락처 관리 프로그램이 종료되었습니다.");
 				return; // while문 처음으로 돌아감
 			default :
