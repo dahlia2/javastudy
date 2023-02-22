@@ -10,15 +10,17 @@ public class ContactServiceimpl implements ContactService {
 	
 	// 필드
 	private Scanner sc;
+	private Car[] cars;
 	private ContactDAO dao;
+	private int idx;
 	
 	// 생성자
 	public ContactServiceimpl() {
+		cars = new Car[10];
 		sc = new Scanner(System.in);
 		dao = ContactDAO.getInstance();
 	}
-	
-	
+
 	
 	// 메소드 ///////////////////////////
 	
@@ -26,6 +28,14 @@ public class ContactServiceimpl implements ContactService {
 	// [ 차량 추가 ]
 	@Override
 	public void addCar() {
+		
+		System.out.println("현재 등록된 차량 : " + idx + "대");
+		
+		if (idx == cars.length) {
+			System.out.println("더 이상 차량 등록이 불가능합니다.");
+			return;
+		}
+		
 		System.out.println("========== 차량 추가하기 ==========");
 		
 		System.out.print("신규 차량 입력 [차량 번호] >>> ");
@@ -34,15 +44,17 @@ public class ContactServiceimpl implements ContactService {
 		System.out.print("신규 차량 입력 [모델명] >>> ");
 		String model = sc.next();
 		
+		cars[idx++] = new Car(num, model);
+		
 		// 받은 값을 하나로 모음
 		ContactDTO car = new ContactDTO();
 		car.setNum(num);
 		car.setModel(model);  // DTO set 설정!
 		
 		// 하나의 행 값이 들어가 있음
-		int addResult = dao.insertCar(car);
-		
-		System.out.println(addResult + "개의 차량이 등록되었습니다.");
+		// int addResult = dao.insertCar(car);
+		System.out.println("차량번호 " + num + "차량이 등록되었습니다.");
+	
 	}
 	
 	
