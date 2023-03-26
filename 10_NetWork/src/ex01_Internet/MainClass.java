@@ -61,7 +61,7 @@ public class MainClass {
 		
 		try {
 			url = new URL(apiURL);		// MalformedURLException 처리가 필요
-			con = (HttpURLConnection)url.openConnection(); // IoException 처리가 필요
+			con = (HttpURLConnection)url.openConnection(); // IOException 처리가 필요
 			
 			/*
 				HTTP 응답 코드 (공부하기!)
@@ -85,7 +85,7 @@ public class MainClass {
 			// 컨텐트 타입
 			String contentType = con.getContentType();
 			System.err.println("컨텐트 타입 :" + contentType);
-				// ㄴ (text / html) , (image / png) , (applicatiln / json) 와 같이 int, double처럼 자바의 상수 개념
+				// ㄴ (text / html) , (image / png) , (application / json) 와 같이 int, double처럼 자바의 상수 개념
 			}
 			
 			// 요청 헤더
@@ -356,7 +356,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex05();
+		ex01();
 
 	}
 
